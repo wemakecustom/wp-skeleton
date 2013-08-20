@@ -1,0 +1,95 @@
+{
+    "name": "wemakecustom/wp-skeleton",
+    "description": "Wordpress skeleton using composer, bower, plugin dependencies and various config files",
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "WeMakeCustom",
+            "email": "info@wemakecustom.com",
+            "homepage": "http://www.wemakecustom.com"
+        }
+    ],
+    "autoload": {
+        "psr-0": { "": "src/" }
+    },
+    "require": {
+        "wpackagist/html-helpers": "*",
+        "wpackagist/regenerate-thumbnails": "*",
+        "wpackagist/w3-total-cache": "*",
+        "wpackagist/google-sitemap-generator": "*",
+
+        "leafo/lessphp": "*",
+        "symfony/yaml": "*",
+        "wordpress/wordpress": "*",
+        "wemakecustom/wp-config-manager": "*",
+        "wemakecustom/wp-skeleton-theme": "*"
+    },
+    "require-dev": {
+        "wemakecustom/wp-pot-generator": "*",
+        "wemakecustom/wp-skeleton-theme-demo": "*"
+    },
+    "suggest": {
+        "wp-plugins/cred": "*",
+        "wp-plugins/types": "*",
+        "wp-plugins/types-access": "*",
+        "wp-plugins/wp-views": "*",
+
+        "wp-plugins/sitepress-multilingual-cms": "*",
+        "wp-plugins/wpml-string-translation": "*",
+        "wp-plugins/wpml-translation-analytics": "*",
+        "wp-plugins/wpml-translation-management": "*",
+
+        "wp-plugins/gravityforms": "*",
+        "wp-plugins/gravityforms-multilingual": "*"
+    },
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "wordpress/wordpress",
+                "version": "3.6",
+                "dist": {
+                    "url": "https://github.com/WordPress/WordPress/archive/3.6.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        {
+            "type": "composer",
+            "url": "http://gitlab-composer.stage.wemakecustom.com/"
+        },
+        {
+            "type":"composer",
+            "url":"http://wpackagist.org"
+        }
+    ],
+    "scripts": {
+        "post-install-cmd": [
+            "WMC\\Wordpress\\Composer\\ConfHandler::updateFiles",
+            "WMC\\Wordpress\\Composer\\ScriptHandler::wordpressSymlinks",
+            "WMC\\Wordpress\\Composer\\ScriptHandler::wordpressTweaks",
+            "WMC\\Wordpress\\Composer\\ScriptHandler::generateRandomKeys",
+            "WMC\\Wordpress\\ConfigManager\\Composer\\ScriptHandler::clearCache"
+        ],
+        "post-update-cmd": [
+            "WMC\\Wordpress\\Composer\\ConfHandler::updateFiles",
+            "WMC\\Wordpress\\Composer\\ScriptHandler::wordpressSymlinks",
+            "WMC\\Wordpress\\Composer\\ScriptHandler::wordpressTweaks",
+            "WMC\\Wordpress\\Composer\\ScriptHandler::generateRandomKeys",
+            "WMC\\Wordpress\\ConfigManager\\Composer\\ScriptHandler::clearCache"
+        ]
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "extra": {
+        "web-dir": "htdocs",
+        "installer-paths": {
+            "htdocs/wp-content/plugins/{$name}/": ["type:wordpress-plugin"],
+            "htdocs/wp-content/mu-plugins/{$name}/": ["type:wordpress-muplugin"],
+            "htdocs/wp-content/themes/composer/{$name}/": ["type:wordpress-theme"]
+        }
+    }
+}

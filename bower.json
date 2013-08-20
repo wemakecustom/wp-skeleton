@@ -1,0 +1,11 @@
+{
+  "name": "wpskeleton",
+  "dependencies": {
+    "jquery": "<2.0",
+    "bootstrap": "~3.0",
+    "font-awesome": "*",
+    "console-polyfill": "*",
+    "underscore": "*",
+    "modernizr": "*"
+  }
+}
