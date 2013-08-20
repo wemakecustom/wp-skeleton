@@ -42,6 +42,9 @@
         "wp-plugins/gravityforms": "*",
         "wp-plugins/gravityforms-multilingual": "*"
     },
+    "provide": {
+        "wemakecustom/wp-skeleton": "self.version"
+    },
     "repositories": [
         {
             "type": "package",
