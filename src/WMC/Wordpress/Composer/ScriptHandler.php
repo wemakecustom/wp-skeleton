@@ -70,11 +70,11 @@ class ScriptHandler
         $wp_dir   = self::getPackagePath($event->getComposer(), 'wordpress/wordpress');
 
         $wp_load = "$wp_dir/wp-load.php";
-        $abspath = self::getRelativePath("$wp_dir/wp-load.php", $web_dir) . '/';
+        $abspath = $web_dir . '/';
 
         $io->write(sprintf('<info>Setting ABSPATH to %s</info>', $abspath));
 
-        $define = "define( 'ABSPATH', __DIR__ . '/$abspath' );";
+        $define = "define( 'ABSPATH', '$abspath' );";
         file_put_contents($wp_load, preg_replace("/^define\(\s*'ABSPATH'.+$/m", $define, file_get_contents($wp_load)));
     }
 
