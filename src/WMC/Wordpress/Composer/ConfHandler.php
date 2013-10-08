@@ -56,7 +56,11 @@ class ConfHandler
         $actualValues = array_replace($actualValues, self::getEnvValues());
         $actualValues = self::getParams($io, $expectedValues, $actualValues);
 
-        file_put_contents($realFile, "; This file is auto-generated during the composer install\n" . self::dump($actualValues));
+        $contents = "; This file is auto-generated during the composer install\n" . self::dump($actualValues);
+
+        if (!is_file($realFile) || md5_file($realFile) != md5($contents)) {
+            file_put_contents($realFile, $contents);
+        }
     }
 
     private static function getEnvValues(array $envMap = array())
