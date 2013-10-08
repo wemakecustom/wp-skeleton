@@ -50,9 +50,9 @@
             "type": "package",
             "package": {
                 "name": "wordpress/wordpress",
-                "version": "3.6",
+                "version": "3.6.1",
                 "dist": {
-                    "url": "https://github.com/WordPress/WordPress/archive/3.6.zip",
+                    "url": "https://github.com/WordPress/WordPress/archive/3.6.1.zip",
                     "type": "zip"
                 }
             }
