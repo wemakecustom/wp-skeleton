@@ -30,7 +30,7 @@
     },
     "suggest": {
         "wp-plugins/cred": "Custom Types Form Builder",
-        "wp-plugins/types": "Custom Types",
+        "wp-plugins/wp-types": "Custom Types",
         "wp-plugins/types-access": "Custom Types Access List",
         "wp-plugins/wp-views": "Custom Types Views",
 

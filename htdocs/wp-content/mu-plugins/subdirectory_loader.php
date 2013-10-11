@@ -32,7 +32,6 @@ function sub_mu_plugins_files()
     }
 
     if ($plugins === false) {
-        echo 'loading';
         if (!function_exists('get_plugins')) {
             // get_plugins is not included by default
             require ABSPATH . 'wp-admin/includes/plugin.php';
