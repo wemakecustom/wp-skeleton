@@ -73,6 +73,8 @@
             "WMC\\Wordpress\\Composer\\ScriptHandler::wordpressSymlinks",
             "WMC\\Wordpress\\Composer\\ScriptHandler::wordpressTweaks",
             "WMC\\Wordpress\\Composer\\ScriptHandler::generateRandomKeys",
+            "WMC\\Wordpress\\PotGenerator\\ComposerHandler::downloadLanguages",
+            "WMC\\Wordpress\\PotGenerator\\ComposerHandler::compile",
             "WMC\\Wordpress\\ConfigManager\\Composer\\ScriptHandler::clearCache"
         ],
         "post-update-cmd": [
@@ -80,6 +82,8 @@
             "WMC\\Wordpress\\Composer\\ScriptHandler::wordpressSymlinks",
             "WMC\\Wordpress\\Composer\\ScriptHandler::wordpressTweaks",
             "WMC\\Wordpress\\Composer\\ScriptHandler::generateRandomKeys",
+            "WMC\\Wordpress\\PotGenerator\\ComposerHandler::downloadLanguages",
+            "WMC\\Wordpress\\PotGenerator\\ComposerHandler::compile",
             "WMC\\Wordpress\\ConfigManager\\Composer\\ScriptHandler::clearCache"
         ]
     },
