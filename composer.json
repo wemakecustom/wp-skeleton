@@ -16,7 +16,7 @@
         "wpackagist/html-helpers": "*",
         "wpackagist/regenerate-thumbnails": "*",
         "wpackagist/w3-total-cache": "*",
-        "wpackagist/google-sitemap-generator": "*",
+        "wpackagist/wordpress-seo": "*",
 
         "leafo/lessphp": "*",
         "symfony/yaml": "*",
@@ -29,18 +29,19 @@
         "wemakecustom/wp-skeleton-theme-demo": "*"
     },
     "suggest": {
-        "wp-plugins/cred": "*",
-        "wp-plugins/types": "*",
-        "wp-plugins/types-access": "*",
-        "wp-plugins/wp-views": "*",
+        "wp-plugins/cred": "Custom Types Form Builder",
+        "wp-plugins/types": "Custom Types",
+        "wp-plugins/types-access": "Custom Types Access List",
+        "wp-plugins/wp-views": "Custom Types Views",
 
-        "wp-plugins/sitepress-multilingual-cms": "*",
-        "wp-plugins/wpml-string-translation": "*",
-        "wp-plugins/wpml-translation-analytics": "*",
-        "wp-plugins/wpml-translation-management": "*",
+        "wp-plugins/sitepress-multilingual-cms": "Mutlilingual support",
+        "wp-plugins/wpml-string-translation": "Mutlilingual String Translation",
+        "wp-plugins/wpml-translation-analytics": "Mutlilingual Translation Analytics",
+        "wp-plugins/wpml-translation-management": "Mutlilingual Translation Management",
 
-        "wp-plugins/gravityforms": "*",
-        "wp-plugins/gravityforms-multilingual": "*"
+        "wp-plugins/gravityforms": "Form builder",
+        "wp-plugins/gravityforms-multilingual": "Form builder multilingual support",
+        "wp-plugins/gravityforms-paypal": "Form builder PayPal support"
     },
     "replace": {
         "wemakecustom/wp-skeleton": "self.version"
