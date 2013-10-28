@@ -72,6 +72,9 @@ class wpdb_mysqli extends wpdb {
 <p>If you don\'t know how to set up a database you should <strong>contact your host</strong>. If all else fails you may find help at the <a href="http://wordpress.org/support/">WordPress Support Forums</a>.</p>' ), htmlspecialchars( $db, ENT_QUOTES ), htmlspecialchars( $this->dbuser, ENT_QUOTES ) ), 'db_select_fail' );
 			return;
 		}
+
+		// also connect mysql for legacy support
+		mysql_select_db($db);
 	}
 
 	/**
@@ -173,8 +176,14 @@ class wpdb_mysqli extends wpdb {
 
 		if ( WP_DEBUG ) {
 			$this->dbh = mysqli_connect( $this->dbhost, $this->dbuser, $this->dbpassword );
+
+			// also connect mysql for legacy support
+			mysql_connect( $this->dbhost, $this->dbuser, $this->dbpassword );
 		} else {
 			$this->dbh = @mysqli_connect( $this->dbhost, $this->dbuser, $this->dbpassword );
+
+			// also connect mysql for legacy support
+			@mysql_connect( $this->dbhost, $this->dbuser, $this->dbpassword );
 		}
 
 		if ( ! $this->dbh ) {
