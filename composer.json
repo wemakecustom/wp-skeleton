@@ -22,10 +22,10 @@
         "symfony/yaml": "*",
         "wordpress/wordpress": "*",
         "wemakecustom/wp-config-manager": "*",
-        "wemakecustom/wp-skeleton-theme": "*"
+        "wemakecustom/wp-skeleton-theme": "*",
+        "wemakecustom/wp-pot-generator": "*"
     },
     "require-dev": {
-        "wemakecustom/wp-pot-generator": "*",
         "wemakecustom/wp-skeleton-theme-demo": "*"
     },
     "suggest": {
@@ -51,9 +51,9 @@
             "type": "package",
             "package": {
                 "name": "wordpress/wordpress",
-                "version": "3.6.1",
+                "version": "3.7",
                 "dist": {
-                    "url": "https://github.com/WordPress/WordPress/archive/3.6.1.zip",
+                    "url": "https://github.com/WordPress/WordPress/archive/3.7.zip",
                     "type": "zip"
                 }
             }
