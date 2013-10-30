@@ -5,6 +5,8 @@ namespace WMC\Wordpress\Composer;
 use Composer\IO\IOInterface;
 use Composer\Script\Event;
 use Composer\Composer;
+use WMC\Composer\Utils\Filesystem\PathUtil;
+use WMC\Composer\Utils\Composer\PackageLocator;
 
 class ScriptHandler
 {
@@ -14,7 +16,7 @@ class ScriptHandler
         $io       = $event->getIO();
         $extras   = $composer->getPackage()->getExtra();
         $web_dir  = getcwd() . '/' . (empty($extras['web-dir']) ? 'htdocs' : $extras['web-dir']);
-        $wp_dir   = self::getPackagePath($event->getComposer(), 'wordpress/wordpress');
+        $wp_dir   = PackageLocator::getPackagePath($event->getComposer(), 'wordpress/wordpress');
 
         $io->write(sprintf('<info>Symlinking %s/* into %s/</info>', str_replace(getcwd().'/', '', $wp_dir), str_replace(getcwd().'/', '', $web_dir)));
 
@@ -24,7 +26,7 @@ class ScriptHandler
             }
 
             $link   = "$link_dir/$file";
-            $target = ScriptHandler::getRelativePath($link_dir, $target_dir) . ($target_file ? '/'.$target_file : '');
+            $target = PathUtil::getRelativePath($link_dir, $target_dir) . ($target_file ? '/'.$target_file : '');
 
             if (file_exists($link)) {
                 if (@readlink($link) == $target) {
@@ -67,7 +69,7 @@ class ScriptHandler
         $io       = $event->getIO();
         $extras   = $composer->getPackage()->getExtra();
         $web_dir  = getcwd() . '/' . (empty($extras['web-dir']) ? 'htdocs' : $extras['web-dir']);
-        $wp_dir   = self::getPackagePath($event->getComposer(), 'wordpress/wordpress');
+        $wp_dir   = PackageLocator::getPackagePath($event->getComposer(), 'wordpress/wordpress');
 
         $wp_load = "$wp_dir/wp-load.php";
         $abspath = $web_dir . '/';
@@ -96,53 +98,6 @@ class ScriptHandler
                 file_put_contents($file, $rnd);
             } else {
                 $io->write('<error>Error while generating secret keys: random-keys.php is not writable</error>');
-            }
-        }
-    }
-
-    /**
-     * @link https://gist.github.com/lavoiesl/5525558
-     */
-    public static function getRelativePath($from, $to)
-    {
-        $from = realpath($from);
-        $to   = realpath(dirname($to)) . '/' . basename($to);
-        if (!$from || !$to) {
-            return false;
-        }
-
-        // Get dir if source is a file
-        if (!is_dir($from)) {
-            $from = dirname($from);
-        }
-
-        $from = explode(DIRECTORY_SEPARATOR, $from);
-        $to   = explode(DIRECTORY_SEPARATOR, $to);
-
-        for ($i=0; $i < count($from) && $i < count($to); $i++) { 
-            if ($from[$i] != $to[$i]) {
-                break;
-            }
-        }
-
-        $from = array_splice($from, $i);
-        $to   = array_splice($to, $i);
-
-        $up   = str_repeat('..'.DIRECTORY_SEPARATOR, count($from));
-        $down = implode(DIRECTORY_SEPARATOR, $to);
-
-        return $up . $down;
-    }
-
-    protected static function getPackagePath(Composer $composer, $packageName)
-    {
-        $repo        = $composer->getRepositoryManager()->getLocalRepository();
-        $install_mgr = $composer->getInstallationManager();
-        $packages    = $repo->findPackages($packageName, null);
-
-        foreach ($packages as $package) {
-            if ($install_mgr->getInstaller($package->getType())->isInstalled($repo, $package)) {
-                return $install_mgr->getInstallPath($package);
             }
         }
     }

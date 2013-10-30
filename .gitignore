@@ -32,6 +32,8 @@
 # Plugins are managed by composer
 /htdocs/wp-content/plugins
 !/htdocs/wp-content/plugins/index.php
+/htdocs/wp-content/mu-plugins
+!/htdocs/wp-content/mu-plugins/*.php
 
 /htdocs/wp-content/themes/composer
 

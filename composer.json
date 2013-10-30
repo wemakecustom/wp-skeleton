@@ -13,17 +13,14 @@
         "psr-0": { "": "src/" }
     },
     "require": {
-        "wpackagist/html-helpers": "*",
-        "wpackagist/regenerate-thumbnails": "*",
         "wpackagist/w3-total-cache": "*",
         "wpackagist/wordpress-seo": "*",
 
         "leafo/lessphp": "*",
-        "symfony/yaml": "*",
         "wordpress/wordpress": "*",
-        "wemakecustom/wp-config-manager": "*",
+
         "wemakecustom/wp-skeleton-theme": "*",
-        "wemakecustom/wp-pot-generator": "*"
+        "wemakecustom/composer-script-utils": "*"
     },
     "require-dev": {
         "wemakecustom/wp-skeleton-theme-demo": "*"
@@ -51,9 +48,9 @@
             "type": "package",
             "package": {
                 "name": "wordpress/wordpress",
-                "version": "3.7",
+                "version": "3.7.1",
                 "dist": {
-                    "url": "https://github.com/WordPress/WordPress/archive/3.7.zip",
+                    "url": "https://github.com/WordPress/WordPress/archive/3.7.1.zip",
                     "type": "zip"
                 }
             }
