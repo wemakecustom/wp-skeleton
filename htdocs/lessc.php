@@ -48,15 +48,25 @@ if (!is_file($less_file)) {
     die();
 }
 
+if (!is_dir(dirname($cache_dir))) {
+    @mkdir($cache_dir, 0700, true);
+    @chmod(dirname($cache_dir), 0777);
+}
+
 if (!is_dir(dirname($css_file))) {
-    mkdir(dirname($css_file), 0777, true);
-    chmod(dirname($css_file), 0777);
+    @mkdir(dirname($css_file), 0777, true);
 }
 
 require_once dirname(dirname(__FILE__)) . '/vendor/autoload.php';
 
 $less = new lessc;
 $less->setFormatter("compressed");
+
+if (!is_writable(dirname($css_file))) {
+    // hack to continue working even if cache dir is not writable
+    $temp_file = $css_file = tempnam(null, "lessphp_" . $_SERVER['SERVER_NAME']);
+    touch($temp_file, 0); // always older
+}
 
 try {
     // Compiles only if $less_file mtime != $css_file mtime
@@ -85,3 +95,7 @@ if (isset($_SERVER['HTTP_IF_MODIFIED_SINCE']) && strtotime($_SERVER['HTTP_IF_MOD
 }
 
 fclose($fp);
+
+if (isset($temp_file)) {
+    unlink($temp_file);
+}
