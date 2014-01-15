@@ -50,6 +50,7 @@ if (!is_file($less_file)) {
 
 if (!is_dir(dirname($css_file))) {
     mkdir(dirname($css_file), 0777, true);
+    chmod(dirname($css_file), 0777);
 }
 
 require_once dirname(dirname(__FILE__)) . '/vendor/autoload.php';
