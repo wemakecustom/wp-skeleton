@@ -71,6 +71,11 @@ class ScriptHandler
         $web_dir  = getcwd() . '/' . (empty($extras['web-dir']) ? 'htdocs' : $extras['web-dir']);
         $wp_dir   = PackageLocator::getPackagePath($event->getComposer(), 'wordpress/wordpress');
 
+        $mu_loader = PackageLocator::getPackagePath($event->getComposer(), 'wemakecustom/wp-mu-loader');
+        if ($mu_loader) {
+            copy("$mu_loader/mu-require.php", dirname($mu_loader) . '/mu-require.php');
+        }
+
         $wp_load = "$wp_dir/wp-load.php";
         $abspath = $web_dir . '/';
 
