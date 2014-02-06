@@ -48,9 +48,9 @@
             "type": "package",
             "package": {
                 "name": "wordpress/wordpress",
-                "version": "3.8",
+                "version": "3.8.1",
                 "dist": {
-                    "url": "https://github.com/WordPress/WordPress/archive/3.8.zip",
+                    "url": "https://github.com/WordPress/WordPress/archive/3.8.1.zip",
                     "type": "zip"
                 }
             }
