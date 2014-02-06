@@ -34,6 +34,7 @@
 !/htdocs/wp-content/plugins/index.php
 /htdocs/wp-content/mu-plugins/*
 !/htdocs/wp-content/mu-plugins/*.php
+/htdocs/wp-content/mu-plugins/mu-require.php
 
 /htdocs/wp-content/themes/composer
 
