@@ -13,8 +13,8 @@
         "psr-0": { "": "src/" }
     },
     "require": {
-        "wpackagist/w3-total-cache": "*",
-        "wpackagist/wordpress-seo": "*",
+        "wpackagist-plugin/w3-total-cache": "*",
+        "wpackagist-plugin/wordpress-seo": "*",
 
         "leafo/lessphp": "*",
         "wordpress/wordpress": "*",
