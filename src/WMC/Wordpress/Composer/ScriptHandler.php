@@ -28,12 +28,16 @@ class ScriptHandler
             $link   = "$link_dir/$file";
             $target = PathUtil::getRelativePath($link_dir, $target_dir) . ($target_file ? '/'.$target_file : '');
 
-            if (file_exists($link)) {
-                if (@readlink($link) == $target) {
+            if (@readlink($link)) {
+                if (readlink($link) === $target) {
                     return;
                 } else {
-                    $io->write(sprintf('<error>Error while creating a symlink to %s: file exists</error>', str_replace(getcwd().'/', '', $link)));
+                    unlink($link);
                 }
+            }
+
+            if (file_exists($link)) {
+                $io->write(sprintf('<error>Error while creating a symlink to %s: file exists</error>', str_replace(getcwd().'/', '', $link)));
             } else {
                 $io->write(sprintf('<info>Creating symlink %s -> %s.</info>', str_replace(getcwd().'/', '', $link), $target));
                 symlink($target, $link);
@@ -73,7 +77,11 @@ class ScriptHandler
 
         $mu_loader = PackageLocator::getPackagePath($event->getComposer(), 'wemakecustom/wp-mu-loader');
         if ($mu_loader) {
-            copy("$mu_loader/mu-require.php", dirname($mu_loader) . '/mu-require.php');
+            if (!file_exists(dirname($mu_loader) . '/mu-require.php')
+                || md5_file("$mu_loader/mu-require.php") != md5_file(dirname($mu_loader) . '/mu-require.php')) {
+                $io->write('<info>Installing mu-require.php</info>');
+                copy("$mu_loader/mu-require.php", dirname($mu_loader) . '/mu-require.php');
+            }
         }
 
         $wp_load = "$wp_dir/wp-load.php";
@@ -85,6 +93,7 @@ class ScriptHandler
         file_put_contents($wp_load, preg_replace("/^define\(\s*'ABSPATH'.+$/m", $define, file_get_contents($wp_load)));
 
         if (!file_exists("$web_dir/wp-config.php")) {
+            $io->write('<info>Installing default wp-config.php</info>');
             copy("$web_dir/wp-config-sample.php", "$web_dir/wp-config.php");
         }
     }
