@@ -8,6 +8,7 @@
 /htdocs/wp-activate.php
 /htdocs/wp-admin
 /htdocs/wp-blog-header.php
+/htdocs/wp-config.php
 /htdocs/wp-comments-post.php
 /htdocs/wp-cron.php
 /htdocs/wp-includes

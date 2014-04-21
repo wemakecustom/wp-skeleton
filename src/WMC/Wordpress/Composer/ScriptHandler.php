@@ -83,6 +83,10 @@ class ScriptHandler
 
         $define = "define( 'ABSPATH', '$abspath' );";
         file_put_contents($wp_load, preg_replace("/^define\(\s*'ABSPATH'.+$/m", $define, file_get_contents($wp_load)));
+
+        if (!file_exists("$web_dir/wp-config.php")) {
+            copy("$web_dir/wp-config-sample.php", "$web_dir/wp-config.php");
+        }
     }
 
     public static function generateRandomKeys(Event $event)
