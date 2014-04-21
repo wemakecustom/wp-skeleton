@@ -22,8 +22,8 @@
         "wemakecustom/wp-skeleton-theme-demo": "*"
     },
     "suggest": {
+        "wpackagist-plugin/types": "Custom Types",
         "wp-plugins/cred": "Custom Types Form Builder",
-        "wp-plugins/wp-types": "Custom Types",
         "wp-plugins/types-access": "Custom Types Access List",
         "wp-plugins/wp-views": "Custom Types Views",
 
