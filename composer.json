@@ -9,18 +9,14 @@
             "homepage": "http://www.wemakecustom.com"
         }
     ],
-    "autoload": {
-        "psr-0": { "": "src/" }
-    },
     "require": {
         "wpackagist-plugin/w3-total-cache": "*",
         "wpackagist-plugin/wordpress-seo": "*",
 
         "leafo/lessphp": "*",
-        "wordpress/wordpress": "*",
 
-        "wemakecustom/wp-skeleton-theme": "*",
-        "wemakecustom/composer-script-utils": "*"
+        "wemakecustom/wp-skeleton-installer": "*",
+        "wemakecustom/wp-skeleton-theme": "*"
     },
     "require-dev": {
         "wemakecustom/wp-skeleton-theme-demo": "*"
@@ -45,17 +41,6 @@
     },
     "repositories": [
         {
-            "type": "package",
-            "package": {
-                "name": "wordpress/wordpress",
-                "version": "3.8.1",
-                "dist": {
-                    "url": "https://github.com/WordPress/WordPress/archive/3.8.1.zip",
-                    "type": "zip"
-                }
-            }
-        },
-        {
             "type": "composer",
             "url": "http://gitlab-composer.stage.wemakecustom.com/"
         },
@@ -66,19 +51,13 @@
     ],
     "scripts": {
         "post-install-cmd": [
-            "WMC\\Wordpress\\Composer\\ConfHandler::updateFiles",
-            "WMC\\Wordpress\\Composer\\ScriptHandler::wordpressSymlinks",
-            "WMC\\Wordpress\\Composer\\ScriptHandler::wordpressTweaks",
-            "WMC\\Wordpress\\Composer\\ScriptHandler::generateRandomKeys",
+            "WMC\\Wordpress\\SkeletonInstaller\\Composer\\ScriptHandler::handle",
             "WMC\\Wordpress\\PotGenerator\\ComposerHandler::downloadLanguages",
             "WMC\\Wordpress\\PotGenerator\\ComposerHandler::compile",
             "WMC\\Wordpress\\ConfigManager\\Composer\\ScriptHandler::clearCache"
         ],
         "post-update-cmd": [
-            "WMC\\Wordpress\\Composer\\ConfHandler::updateFiles",
-            "WMC\\Wordpress\\Composer\\ScriptHandler::wordpressSymlinks",
-            "WMC\\Wordpress\\Composer\\ScriptHandler::wordpressTweaks",
-            "WMC\\Wordpress\\Composer\\ScriptHandler::generateRandomKeys",
+            "WMC\\Wordpress\\SkeletonInstaller\\Composer\\ScriptHandler::handle",
             "WMC\\Wordpress\\PotGenerator\\ComposerHandler::downloadLanguages",
             "WMC\\Wordpress\\PotGenerator\\ComposerHandler::compile",
             "WMC\\Wordpress\\ConfigManager\\Composer\\ScriptHandler::clearCache"
@@ -91,6 +70,7 @@
     "prefer-stable": true,
     "extra": {
         "web-dir": "htdocs",
+        "wordpress-install-dir": "vendor/wordpress/wordpress",
         "installer-paths": {
             "htdocs/wp-content/plugins/{$name}/": ["type:wordpress-plugin"],
             "htdocs/wp-content/mu-plugins/{$name}/": ["type:wordpress-muplugin"],
