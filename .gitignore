@@ -1,5 +1,4 @@
 /bin
-/composer.lock
 /vendor
 *.log
 /htdocs/random-keys.php
