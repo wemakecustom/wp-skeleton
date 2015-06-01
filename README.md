@@ -42,7 +42,7 @@ Running *bower* will insure that the following scripts are installed in _/wp-con
 - underscore
 - modernizr
 
-Documentation
+##Documentation
 - https://github.com/wemakecustom/wp-skeleton-installer
 - https://github.com/leafo/lessphp
 - http://wpackagist.org/
