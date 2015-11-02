@@ -1,50 +1,52 @@
 Wordpress Skeleton
 ==================
 
-**wp-skeleton** is a very thin wrapper around https://github.com/wemakecustom/wp-skeleton-installer.
-The easy way to install WordPress and get it work.
+**wp-skeleton** is a very thin wrapper around [wp-skeleton-installer](https://github.com/wemakecustom/wp-skeleton-installer).
+The easy way to install WordPress and get it works.
 
-##Features
-- All the needed files (including the .gitignore) are installed.
-- Dependency management with composer and bower.
-- LESS compiler.
-- A basic .htacess _(with rewriterule, compression and expires headers)_.
+## What it does
 
-##Installation
+If you use this wrapper, you will get :
+- Packages dependencies management with composer :
+  * wemakecustom/wp-skeleton-installer (needed for this wrapper to work properly) 
+  * wemakecustom/wp-skeleton-theme
+  * wemakecustom/wp-skeleton-theme-demo (child theme in dev environnement)
+  * leafo/lessphp
+  * wpackagist-plugin/w3-total-cache
+  * wpackagist-plugin/wordpress-seo
+- Libraries dependencies management with bower :
+  * jquery (version <2.0)
+  * bootstrap (version ~3.0)
+  * font-awesome
+  * console-polyfill
+  * underscore
+  * modernizr
+- a LESS compiler (LESSC.php).
+- a basic .HTACCESS (that include rewriterules for LESS files, compression, expires headers).
 
-Clone the git repo
+## Installation
+
+Clone this git repo.
 ````
 $ git clone git@github.com:wemakecustom/wp-skeleton.git
 ````
-Run composer to install all packages that **wp-skeleton** depends on.
+Run composer to install.
 ````
 $ composer install
 ````
-Run bower to get all recent script up to date.
+Or if you doesn't need the demo theme
+````
+$ composer install --no-dev
+````
+Run bower to get all recent script up to date in _/wp-content/components_.
 ````
 $ bower update
 ````
 
-##Result
-Running *composer* of **wp-skeleton** will install all the following needed packages:
-- wp-skeleton-installer (and its dependencies) 
-- lessphp
-- w3-total-cache
-- wordpress-seo
-- wp-skeleton-theme
-- wp-skeleton-theme-demo (child theme in dev environnement)
+## Documentation
 
-Running *bower* will insure that the following scripts are installed in _/wp-content/components_:
-- jquery
-- bootstrap
-- font-awesome
-- console-polyfill
-- underscore
-- modernizr
-
-##Documentation
 - https://github.com/wemakecustom/wp-skeleton-installer
-- https://github.com/leafo/lessphp
-- http://wpackagist.org/
 - https://github.com/wemakecustom/wp-skeleton-theme
 - https://github.com/wemakecustom/wp-skeleton-theme-demo
+- https://github.com/leafo/lessphp
+- http://wpackagist.org/
