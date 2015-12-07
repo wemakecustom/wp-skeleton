@@ -15,7 +15,7 @@
 
         "leafo/lessphp": "*",
 
-        "wemakecustom/wp-skeleton-installer": "~2.0",
+        "wemakecustom/wp-skeleton-installer": "~3.0",
         "wemakecustom/wp-skeleton-theme": "*"
     },
     "require-dev": {
