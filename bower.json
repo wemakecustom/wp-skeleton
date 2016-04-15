@@ -3,9 +3,9 @@
   "dependencies": {
     "jquery": "<2.0",
     "bootstrap": "~3.0",
-    "font-awesome": "*",
+    "font-awesome": "~4.0",
     "console-polyfill": "*",
     "underscore": "*",
-    "modernizr": "*"
+    "modernizr": "~3.0"
   }
 }
