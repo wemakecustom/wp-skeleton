@@ -11,7 +11,7 @@
     ],
     "require": {
         "wpackagist-plugin/w3-total-cache": "^0.9",
-        "wpackagist-plugin/wordpress-seo": "*",
+        "wpackagist-plugin/wordpress-seo": "^3.0",
 
         "leafo/lessphp": "*",
 
